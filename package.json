@@ -1,0 +1,12 @@
+{
+  "name": "express-url-shortener",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://www.github.com/davified/express-url-shortener",
+  "author": "davidtan <davidtan@thoughtworks.com>",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2"
+  }
+}
