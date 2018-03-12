@@ -55,7 +55,7 @@ Suppose the given hash value does not correspond to any valid URLs registered wi
 
 ```json
 {
-  "error": "There is no long URL registered for hash value 'MTAwMDA='";
+  "message": "There is no long URL registered for hash value 'MTAwMDA='";
 }
 ```
 
