@@ -2,6 +2,14 @@
 
 Build a URL-shortener service like [bit.ly](https://bitly.com/) or [goo.gl](https://goo.gl/) using Express.js.
 
+## Getting started
+- Fork and clone the repo
+- Install dependencies: `yarn install`
+- Start the application: `node server.js`
+  - You can also use `nodemon` to automatically restart your application with every code change: `nodemon server.js`
+
+## Your Task
+
 At a very high level, the URL shortener works by taking an entered URL and creating a relatively shortened version simplified into an easy to share format.
 
 In this assignment, you need to implement two API endpoints:

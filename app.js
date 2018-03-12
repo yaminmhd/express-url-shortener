@@ -2,11 +2,13 @@ const express = require("express");
 const path = require("path");
 const bodyParser = require("body-parser");
 
+// load our own helper functions
+const encode = require("./demo/encoder");
+const decode = require("./demo/decoder");
+
 const app = express();
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-// TODO: try and implement URL encoder
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -24,6 +26,11 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render("error");
+});
+
+// TODO: Implement functionalities specified in README
+app.get("/", function(req, res) {
+  res.send("Hello world!");
 });
 
 module.exports = app;
