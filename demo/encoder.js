@@ -1,6 +1,5 @@
 // run this file with `node demo/encoding-example.js` to see how you can encode/decode a string
 const btoa = require("btoa");
-const atob = require("atob");
 
 function encode(url, URLs) {
   const matchingUrls = URLs.filter(element => element.url === url);
@@ -9,7 +8,6 @@ function encode(url, URLs) {
     encodedString = matchingUrls[0].hash;
   } else {
     id = URLs.length + 1;
-    URLs.push({ id: id, url: url });
     encodedString = btoa(id);
   }
 

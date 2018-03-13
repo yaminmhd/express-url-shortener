@@ -1,5 +1,4 @@
 // run this file with `node demo/decoding-example.js` to see how you can encode/decode a string
-const btoa = require("btoa");
 const atob = require("atob");
 
 function decode(hash, URLs) {

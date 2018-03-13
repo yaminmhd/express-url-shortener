@@ -6,12 +6,17 @@
   "author": "davidtan <davidtan@thoughtworks.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "dependencies": {
     "atob": "^2.0.3",
     "body-parser": "^1.18.2",
     "btoa": "^1.1.2",
     "express": "^4.16.2"
+  },
+  "devDependencies": {
+    "jest": "^22.4.2"
   }
 }
