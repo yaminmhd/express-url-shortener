@@ -8,6 +8,11 @@ const decode = require("./demo/decoder");
 
 const app = express();
 
+// TODO: Implement functionalities specified in README
+app.get("/", function(req, res) {
+  res.send("Hello world!");
+});
+
 app.use(bodyParser.json());
 
 // catch 404 and forward to error handler
@@ -26,11 +31,6 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render("error");
-});
-
-// TODO: Implement functionalities specified in README
-app.get("/", function(req, res) {
-  res.send("Hello world!");
 });
 
 module.exports = app;

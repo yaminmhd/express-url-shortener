@@ -6,7 +6,7 @@ function encode(url, URLs) {
   const matchingUrls = URLs.filter(element => element.url === url);
 
   if (matchingUrls.length > 0) {
-    encodedString = btoa(matchingUrls[0].id);
+    encodedString = matchingUrls[0].hash;
   } else {
     id = URLs.length + 1;
     URLs.push({ id: id, url: url });
@@ -17,8 +17,8 @@ function encode(url, URLs) {
 }
 
 const existingURLs = [
-  { id: "1", url: "www.google.com", encodedId: "MQ==" },
-  { id: "2", url: "www.facebook.com", encodedId: "Mg==" }
+  { id: "1", url: "www.google.com", hash: "MQ==" },
+  { id: "2", url: "www.facebook.com", hash: "Mg==" }
 ];
 
 console.log(encode("www.google.com", existingURLs));

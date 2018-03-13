@@ -2,13 +2,13 @@
 const btoa = require("btoa");
 const atob = require("atob");
 
-function decode(encodedId, URLs) {
-  const matchingUrls = URLs.filter(element => element.encodedId === encodedId);
+function decode(hash, URLs) {
+  const matchingUrls = URLs.filter(element => element.hash === hash);
   if (matchingUrls.length === 0) {
     throw new Error("url does not exist in our data store");
   }
 
-  id = atob(matchingUrls[0].encodedId);
+  id = atob(matchingUrls[0].hash);
   matchingUrl = URLs.filter(element => element.id === id)[0];
   url = matchingUrl.url;
 
@@ -16,12 +16,12 @@ function decode(encodedId, URLs) {
 }
 
 const existingURLs = [
-  { id: "1", url: "www.google.com", encodedId: "MQ==" },
-  { id: "2", url: "www.facebook.com", encodedId: "Mg==" }
+  { id: "1", url: "www.google.com", hash: "MQ==" },
+  { id: "2", url: "www.facebook.com", hash: "Mg==" }
 ];
 
 console.log(decode("MQ==", existingURLs));
 console.log(decode("Mg==", existingURLs));
-// console.log(decode("Xya0", existingURLs)); // this will throw an Error because this encodedId does not exist in URLs
+// console.log(decode("Xya0", existingURLs)); // this will throw an Error because this hash does not exist in URLs
 
 module.exports = decode;
