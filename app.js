@@ -1,19 +1,17 @@
 const express = require("express");
-const path = require("path");
 const bodyParser = require("body-parser");
 
 // load our own helper functions
-const encode = require("./demo/encoder");
-const decode = require("./demo/decoder");
+const encode = require("./demo/encode");
+const decode = require("./demo/decode");
 
 const app = express();
+app.use(bodyParser.json());
 
 // TODO: Implement functionalities specified in README
 app.get("/", function(req, res) {
   res.send("Hello world!");
 });
-
-app.use(bodyParser.json());
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

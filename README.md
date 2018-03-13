@@ -53,15 +53,7 @@ Note:
 
 You can read more about [base64 encoding](https://developer.mozilla.org/en-US/docs/Web/API/WindowBase64/Base64_encoding_and_decoding) here
 
-### POST /expand-url
-
-The body of the HTTP request should be an JSON object containing one field `hash`, e.g.
-
-```json
-{
-   "hash": "MTAwMDA="
-}
-```
+### GET /expand-url/:hash
 
 Note:
 - In this project, there's a helper function (in `./demo/decoder.js`) to help you with the decoding.
@@ -82,7 +74,7 @@ Note:
 }
 ```
 
-### DELETE /expand-url?hash=someHash
+### DELETE /expand-url/:hash
 
 Suppose someone wants to delete the record of the shortened URL (people do that when they don't want their bitly link to be accessible anymore). The API should delete the record if it exists and return a HTTP status code `200` and a JSON string in body.
 
