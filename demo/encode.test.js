@@ -1,7 +1,7 @@
-const encode = require("./encoder");
+const encode = require("./encode");
 const btoa = require("btoa");
 
-describe("encoder", () => {
+describe("encode", () => {
   let existingURLs;
 
   beforeEach(() => {

@@ -1,7 +1,7 @@
-const decode = require("./decoder");
+const decode = require("./decode");
 const btoa = require("btoa");
 
-describe("decoder", () => {
+describe("decode", () => {
   let existingURLs;
 
   beforeEach(() => {
