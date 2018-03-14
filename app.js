@@ -55,11 +55,11 @@ app.get("/expand-url/:hash", function(req,res){
 
 //delete /expand-url:hash
 app.delete('/expand-url/:hash', function(req,res){
-  const item = existingURLs.filter(obj => obj["hash"] === req.params.hash);
-  if(item){
-    res.send(item);
+  const itemToDelete = existingURLs.filter(obj => obj["hash"] === req.params.hash);
+  if(itemToDelete.length !== 0){
+    res.send({message: `URL with hash value '${req.params.hash}' deleted successfully`});
   }else{
-    res.send({message: "Not found!"})
+    res.send({message: `URL with hash value '${req.params.hash}' does not exist`})
   }
 });
 
