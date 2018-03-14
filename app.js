@@ -42,7 +42,7 @@ app.post('/shorten-url', function(req,res){
 app.get("/expand-url/:hash", function(req,res){
   try {
     const url = decode(req.params.hash, existingURLs);
-    const obj = existingURLs.filter(item => item["url"] === url);
+    //const obj = existingURLs.filter(item => item["url"] === url);
     res.send({url})
   } catch (error) {
     res.status(404);
@@ -53,13 +53,28 @@ app.get("/expand-url/:hash", function(req,res){
 });
 
 
-//delete /expand-url:hash
+//DELETE /expand-url:hash
 app.delete('/expand-url/:hash', function(req,res){
   const itemToDelete = existingURLs.filter(obj => obj["hash"] === req.params.hash);
   if(itemToDelete.length !== 0){
     res.send({message: `URL with hash value '${req.params.hash}' deleted successfully`});
   }else{
     res.send({message: `URL with hash value '${req.params.hash}' does not exist`})
+  }
+});
+
+//bonus task: GET /:someHash should redirect user to the actual URL (e.g. www.google.com)
+app.get('/:hash', function(req,res){
+  const checkHashExist = existingURLs.some(obj => obj["hash"] === req.params.hash);
+
+  try {
+    const url = decode(req.params.hash, existingURLs);
+    if(checkHashExist === true){
+      res.redirect(`https://${url}`);
+    }
+  } catch (error) {
+    res.status(404);
+    res.send({message: `URL with hash value ${req.params.hash} does not exist`});
   }
 });
 
