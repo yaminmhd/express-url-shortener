@@ -2,6 +2,8 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require('mongoose');
 const url = require('./routes/url');
+const Url = require('./models/url');
+const Counter = require('./models/counter');
 
 const app = express();
 
@@ -9,6 +11,20 @@ const app = express();
 app.use(bodyParser.json());
 app.use('/', url);
 
+mongoose.connect('mongodb://localhost/url-shortener', async function(err){
+  try {
+    console.log('Connected successfully');
+    await Url.remove({});
+    console.log('URL collection removed');
+    await Counter.remove({});
+    console.log('Counter collection removed');
+    const counter = new Counter({_id: 'url_count', count: 10000});
+    await counter.save();
+    console.log('counter inserted');
+  } catch (error) {
+    throw error
+  }
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
