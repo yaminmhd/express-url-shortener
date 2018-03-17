@@ -1,3 +1,7 @@
+if(process.env.ENV !== 'production'){
+  require('dotenv').load();
+}
+
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require('mongoose');
@@ -11,7 +15,9 @@ const app = express();
 app.use(bodyParser.json());
 app.use('/', url);
 
-mongoose.connect('mongodb://localhost/url-shortener', async function(err){
+const dbUrl = process.env.MONGODB_URL;
+
+mongoose.connect(dbUrl, async function(err){
   try {
     console.log('Connected successfully');
     await Url.remove({});
