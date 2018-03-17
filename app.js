@@ -15,7 +15,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use('/', url);
 
-const dbUrl = process.env.MONGODB_URL;
+const dbUrl = process.env.MONGODB_URI;
 
 mongoose.connect(dbUrl, async function(err){
   try {
