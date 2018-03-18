@@ -4,6 +4,7 @@ const app = require('../../app');
 const request = require('supertest');
 const Url = require('../../models/url');
 const mongoose = require('mongoose');
+const btoa = require('btoa');
 
 describe('routes/urls', ()=>{
   let db;
@@ -29,8 +30,24 @@ describe('routes/urls', ()=>{
     expect(response.body.hash).toEqual('MTAwMDA=');
   });
 
+  it('GET/expand-url/:hash shoud return a status of 200 and expand the hash to a url', async () => {
+    const response = await request(app)
+      .get('/expand-url/MTAwMDA=')
+    expect(response.status).toEqual(200);
+    expect(response.body.url).toEqual('www.google.com');
+  });
+
+  it('DELETE/expand-url/:hash should return a status of 200 and delete the hash from the DB', async() => {
+    const response = await request(app)
+      .delete('/expand-url/MTAwMDA=')
+
+      expect(response.status).toEqual(200);
+      expect(response.body.message).toEqual('URL with hash value \'MTAwMDA=\' deleted successfully');
+  });
+
   afterAll(async() =>{
     await Url.deleteMany();
     await db.close();
   })
+
 })

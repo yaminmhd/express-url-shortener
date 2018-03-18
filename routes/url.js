@@ -88,9 +88,9 @@ router.get("/expand-url/:hash", async function(req,res){
 router.delete('/expand-url/:hash', async function(req,res){
   try {
     const hashToDelete = await Url.findOne({hash:req.params.hash});
-    //console.log(`Item to delete : ${hashToDelete}`);
+    console.log(`Item to delete : ${hashToDelete}`);
     if(hashToDelete){
-      await Url.findOneAndRemove(hashToDelete.hash)
+      await Url.findByIdAndRemove(hashToDelete._id);
       res.send({message: `URL with hash value '${req.params.hash}' deleted successfully`});
     }else{
       res.send({message: `URL with hash value '${req.params.hash}' does not exist`})
